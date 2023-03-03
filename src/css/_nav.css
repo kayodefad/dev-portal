@@ -1,0 +1,8 @@
+/* #sidebar a {
+} */
+
+#sidebar a:hover,
+#sidebar a.active {
+  color: #fce300;
+  background: black;
+}
