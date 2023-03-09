@@ -5,13 +5,31 @@ const _nav: Nav[] = [
     component: NavLink,
     name: 'E-commerce integration',
     to: '/',
-    children: null,
+    children: [
+      {
+        name: `Create Payment`,
+        hash: 'create-payment',
+      },
+      {
+        name: `Verify Payment`,
+        hash: 'verify-payment',
+      },
+    ],
   },
   {
     component: NavLink,
     name: 'Authentication',
     to: '/authentication',
-    children: null,
+    children: [
+      {
+        name: `Subscription Key`,
+        hash: 'subscription-key',
+      },
+      {
+        name: `User Credentials`,
+        hash: 'user-credentials',
+      },
+    ],
   },
   {
     component: NavLink,

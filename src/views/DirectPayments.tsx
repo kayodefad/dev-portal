@@ -1,7 +1,25 @@
 import React from 'react';
 import { CopyBlock, dracula } from 'react-code-blocks';
-import BottomNav from '../components/BottomNav';
 import { directPaymentsData } from '../data/directPayments';
+
+// {nav.children?.map((item, i) => {
+//     return (
+//       <li
+//         key={i}
+//         className="py-3">
+//         {/* <Link
+//           className="text-white"
+//           to="#">
+//           {item.name}
+//         </Link> */}
+//         <a
+//           href={`#${item.hash}`}
+//           className="text-white">
+//           {item.name}
+//         </a>
+//       </li>
+//     );
+//   })}
 
 const DirectPayments = () => {
   return (
@@ -11,7 +29,7 @@ const DirectPayments = () => {
         return (
           <div
             key={i}
-            id="content"
+            id={`${item.hash}`}
             className="mb-20">
             <div>
               {/* <!-- Title --> */}

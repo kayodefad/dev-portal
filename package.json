@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@heroicons/react": "^2.0.16",
     "@makotot/ghostui": "^2.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -16,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "6.2.2",
     "react-scripts": "5.0.1",
+    "react-scroll": "^1.8.9",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -44,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-scroll": "^1.8.6",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7"

@@ -11,7 +11,7 @@ type AppHeaderProps = {
 
 const AppHeader = ({showSidebar, setShowSidebar}: AppHeaderProps) => {
   return (
-    <header className="font-exo z-50 sticky top-0 left-0 bg-[#FCE300] h-16 flex items-center justify-between px-6">
+    <header className="font-exo z-50 sticky top-0 left-0 bg-[#FCE300]  h-16 flex items-center justify-between px-6">
       <div className="flex gap-16">
         <div>
           <img

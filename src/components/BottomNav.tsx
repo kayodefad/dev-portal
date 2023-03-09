@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import _nav from '../_nav';
 
@@ -15,7 +15,6 @@ const BottomNav = () => {
   };
 
   useEffect(() => {
-    // first
     setCurrentIndex(getCurrentPageIndex());
   }, [location]);
 

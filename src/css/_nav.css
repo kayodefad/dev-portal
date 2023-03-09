@@ -1,8 +1,12 @@
 /* #sidebar a {
 } */
 
-#sidebar a:hover,
-#sidebar a.active {
+#sidebar .navlink:hover,
+#sidebar .navlink.active {
   color: #fce300;
   background: black;
+}
+
+.subNav {
+  color: #fce300;
 }

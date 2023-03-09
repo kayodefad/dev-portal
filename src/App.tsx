@@ -5,7 +5,7 @@ import TabsLayout from './layout/TabsLayout';
 import Authentication from './views/Authentication';
 import Callback from './views/Callback';
 import DirectPayments from './views/DirectPayments';
-import Ecommerce from './views/Ecommerce';
+import Ecommerce from './views/e-commerce/Ecommerce';
 import Statuses from './views/Statuses';
 import Subscriptions from './views/Subscriptions';
 import TestCards from './views/TestCards';
@@ -14,38 +14,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<DefaultLayout />}>
+        <Route path="/" element={<DefaultLayout />}>
           <Route element={<TabsLayout />}>
-            <Route
-              index
-              element={<Ecommerce />}
-            />
-            <Route
-              path="authentication"
-              element={<Authentication />}
-            />
-            <Route
-              path="direct-payments"
-              element={<DirectPayments />}
-            />
-            <Route
-              path="subscriptions"
-              element={<Subscriptions />}
-            />
-            <Route
-              path="callback"
-              element={<Callback />}
-            />
-            <Route
-              path="test-cards"
-              element={<TestCards />}
-            />
-            <Route
-              path="statuses"
-              element={<Statuses />}
-            />
+            <Route index element={<Ecommerce />} />
+            <Route path="authentication" element={<Authentication />} />
+            <Route path="direct-payments" element={<DirectPayments />} />
+            <Route path="subscriptions" element={<Subscriptions />} />
+            <Route path="callback" element={<Callback />} />
+            <Route path="test-cards" element={<TestCards />} />
+            <Route path="statuses" element={<Statuses />} />
           </Route>
         </Route>
       </Routes>

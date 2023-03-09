@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import chevronRight from '../assets/images/chevron-right.svg';
 import chevronDownActive from '../assets/images/chevron-down-active.svg';
 import hydrogenLogo from '../assets/images/large-logo.svg';
@@ -14,7 +15,7 @@ type AppSidebarProps = {
 
 const AppSidebar = ({ showSidebar, setShowSidebar }: AppSidebarProps) => {
   const location = useLocation();
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const currentIndexRef = useRef(0);
   const [navs, setNavs] = useState(
     _nav.map((item) => ({ ...item, isOpen: false }))
   );
@@ -26,11 +27,6 @@ const AppSidebar = ({ showSidebar, setShowSidebar }: AppSidebarProps) => {
     return currentLocationIndex;
   };
 
-  useEffect(() => {
-    // first
-    setCurrentIndex(getCurrentPageIndex());
-  }, [location]);
-
   const toggleShowSubNavs = (index: number) => {
     setNavs(
       navs.map((item, i) => {
@@ -41,6 +37,21 @@ const AppSidebar = ({ showSidebar, setShowSidebar }: AppSidebarProps) => {
       })
     );
   };
+
+  useEffect(() => {
+    currentIndexRef.current = getCurrentPageIndex();
+  }, [location]);
+
+  useEffect(() => {
+    setNavs(
+      navs.map((item, i) => {
+        if (i !== currentIndexRef.current) {
+          item.isOpen = false;
+        }
+        return item;
+      })
+    );
+  }, [location]);
 
   return (
     <div className="fixed w-[290px] h-[calc(100vh-4rem)] bg-[#202020]">
@@ -54,36 +65,43 @@ const AppSidebar = ({ showSidebar, setShowSidebar }: AppSidebarProps) => {
       <p className="mt-6 px-5 text-[#797979] text-[12px]">INDEX</p>
       <nav
         id="sidebar"
-        className="mt-2 max-h-[60vh] overflow-auto text-[12px] flex flex-col">
+        className="mt-2 max-h-[60vh] overflow-auto text-[12px] flex flex-col"
+      >
         {navs.map((nav, i) => {
           return (
-            <NavLink
-              className={({ isActive }) =>
-                'pl-5 pr-7 py-3 text-white hover:text-[#fce300]' +
-                (isActive ? ' active' : '')
-              }
-              to={nav.to}>
-              <div className="flex items-center justify-between">
+            <div key={i}>
+              <NavLink
+                className={({ isActive }) =>
+                  'navlink flex items-center justify-between pl-5 pr-7 py-3 text-white hover:text-[#fce300]' +
+                  (isActive ? ' active' : '')
+                }
+                to={nav.to}
+              >
                 <span className="active">{nav.name}</span>
                 <span
                   onClick={() => toggleShowSubNavs(i)}
-                  className="dropdown-btn cursor-pointer">
+                  className="dropdown-btn cursor-pointer"
+                >
                   <img
                     src={nav.isOpen ? chevronDownActive : chevronRight}
                     alt="chevron-right"
                   />
                 </span>
-              </div>
+              </NavLink>
               {nav.children && nav.isOpen && (
-                <ul className="pl-2 pr-8">
+                <ul className="pl-7 pr-12 pb-2 bg-black">
                   {nav.children?.map((item, i) => {
                     return (
-                      <li
-                        key={i}
-                        className="py-3">
+                      <li key={i} className="py-[10px]">
                         <Link
-                          className="text-white"
-                          to="#">
+                          className="text-white hover:text-[#fce300]"
+                          activeClass="subNav"
+                          to={item.hash}
+                          spy={true}
+                          smooth={true}
+                          duration={500}
+                          offset={-100}
+                        >
                           {item.name}
                         </Link>
                       </li>
@@ -91,15 +109,12 @@ const AppSidebar = ({ showSidebar, setShowSidebar }: AppSidebarProps) => {
                   })}
                 </ul>
               )}
-            </NavLink>
+            </div>
           );
         })}
       </nav>
       <div className="absolute bottom-3 w-[270px] left-[50%] translate-x-[-50%]">
-        <img
-          src={questionPrompt}
-          alt="question prompt"
-        />
+        <img src={questionPrompt} alt="question prompt" />
       </div>
     </div>
   );

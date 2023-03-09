@@ -1,5 +1,6 @@
 export const directPaymentsData = [
   {
+    hash: 'internal-mpi',
     name: "Payment order, card data is collected on merchant's side (internal MPI)",
     description: `<p>
           To make a payment
@@ -69,8 +70,9 @@ export const directPaymentsData = [
     },
   },
   {
+    hash: 'external-mpi',
     name: "Payment for order, card data is collected on merchant's side (external MPI)",
-    description: `<p>
+    description: `<p class="leading-5">
       Facing insecure integration you may be requested to implement an asymmetric request signature. Usually this requirement is applied only if you carry out P2P/AFT/OCT requests. To have a possibility to sign requests you need first to upload a certificate needed by contacting the technical support service.
       Having an appropriate signature key uploaded, you need to generate a hash and a signature using your secret key, in the process of sending a request used in the API interface.
       Thus, the correct hash (X-Hash) and the signature value (X-Signature) must be passed in the request header. The header is filled in using SHA256 and RSA algorithms. The request header will look like this
@@ -100,6 +102,7 @@ export const directPaymentsData = [
     },
   },
   {
+    hash: 'instant-payment',
     name: 'Instant Payment',
     description: `<p>
           Facing insecure integration you may be requested to implement an asymmetric request signature. Usually this requirement is applied only if you carry out P2P/AFT/OCT requests. To have a possibility to sign requests you need first to upload a certificate needed by contacting the technical support service.
@@ -145,6 +148,7 @@ export const directPaymentsData = [
     },
   },
   {
+    hash: 'moto-payment',
     name: 'Moto Payment',
     description: `<p>
           Facing insecure integration you may be requested to implement an asymmetric request signature. Usually this requirement is applied only if you carry out P2P/AFT/OCT requests. To have a possibility to sign requests you need first to upload a certificate needed by contacting the technical support service.
